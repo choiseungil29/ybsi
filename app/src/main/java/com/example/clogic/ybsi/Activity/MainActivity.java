@@ -1,9 +1,11 @@
-package com.example.clogic.ybsi;
+package com.example.clogic.ybsi.Activity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.clogic.ybsi.R;
 
 
 public class MainActivity extends ActionBarActivity {
