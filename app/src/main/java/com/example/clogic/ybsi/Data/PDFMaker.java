@@ -1,14 +1,18 @@
 package com.example.clogic.ybsi.Data;
 
+import android.content.IntentSender;
+import android.util.Log;
+
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
-import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -31,10 +35,10 @@ public class PDFMaker
     }
 
     ///////////////////////////////////////////////////////////////////////////////////
-    public void exportAnswer(List<Answer> answer, Font titleFont, Font dateFont, Font contentsFont) throws FileNotFoundException, DocumentException   //Answer을 PDF로 Export한다
+    public void exportAnswer(String path, List<Answer> answer, Font titleFont, Font dateFont, Font contentsFont) throws FileNotFoundException, DocumentException   //Answer을 PDF로 Export한다
     {
         Document doc = new Document();
-        PdfWriter.getInstance(doc, new FileOutputStream("/mnt/sdcard/image.pdf"));
+        PdfWriter.getInstance(doc, new FileOutputStream(path));
         doc.open();
 
         for(int i=0;i<answer.size();++i)
@@ -60,12 +64,26 @@ public class PDFMaker
 
         doc.close();
     }
-    public void exportAnswer(List<Answer> answer) throws FileNotFoundException, DocumentException
+    public String exportAnswer(List<Answer> answer) throws IOException, DocumentException   //for test
     {
-        Font titleFont = new Font(Font.FontFamily.TIMES_ROMAN, 20.0f, Font.BOLD);
-        Font dateFont = new Font(Font.FontFamily.TIMES_ROMAN, 15.0f);
-        Font contentsFont = new Font(Font.FontFamily.TIMES_ROMAN);
+        BaseFont objBaseFont = BaseFont.createFont("assets/NanumGothicBold.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
 
-        exportAnswer(answer, titleFont, dateFont, contentsFont);
+        Font titleFont = new Font(objBaseFont, 20.0f);
+        Font dateFont = new Font(objBaseFont, 15.0f);
+        Font contentsFont = new Font(objBaseFont);
+
+        exportAnswer("/mnt/sdcard/test.pdf", answer, titleFont, dateFont, contentsFont);
+
+        return "/mnt/sdcard/test.pdf";
+    }
+
+    public void UploadToGoogleDrive()
+    {
+
+    }
+
+    public void UploadToFaceBook()
+    {
+
     }
 }
