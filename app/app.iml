@@ -91,7 +91,11 @@
     <orderEntry type="library" exported="" name="appcompat-v7-22.0.0" level="project" />
     <orderEntry type="library" exported="" name="library-2.5.5" level="project" />
     <orderEntry type="library" exported="" name="sugar-1.3" level="project" />
+<<<<<<< HEAD
 >>>>>>> d4b183ea19987e6a6e0388ee74d98ae74bf83c09
+=======
+    <orderEntry type="library" exported="" name="itextpdf-5.5.5" level="project" />
+>>>>>>> 436f06777c9f49ee34b84c11018a88808da9d54e
     <orderEntry type="library" exported="" name="flatui-3.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-22.0.0" level="project" />
     <orderEntry type="library" exported="" name="library-0.7.9" level="project" />

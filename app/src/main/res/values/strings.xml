@@ -4,9 +4,13 @@
     <string name="app_name">Stella</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+<<<<<<< HEAD
     <string name="title_activity_content_add">ContentAddActivity</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_splash">SplashActivity</string>
 
+=======
+    <string name="title_activity_test">TestActivity</string>
+>>>>>>> 436f06777c9f49ee34b84c11018a88808da9d54e
 </resources>
