@@ -2,6 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/list_bg">
+    android:background="@mipmap/list_bg"
+    android:paddingTop="25dp"
+    android:paddingBottom="25dp">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lv_contents"
+        android:divider="@mipmap/line2"
+        android:paddingLeft="10dp"
+        android:paddingRight="25dp"
+        android:scrollbars="none"
+        android:overScrollMode="never">
+
+    </ListView>
 
 </LinearLayout>

@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,12 +36,31 @@ public class ContentAddFragment extends Fragment {
         Answer answer = new Answer(new Date(System.currentTimeMillis()), "", "", et_content.getText().toString());
         AnswerData.getInstance().saveAnswer(answer);
 
+        et_content.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+                pref.edit().putString("content", charSequence.toString()).commit();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
         return v;
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+
+        pref = activity.getSharedPreferences("Stella", activity.MODE_PRIVATE);
     }
 
     @Override

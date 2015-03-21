@@ -15,16 +15,22 @@ import android.widget.AdapterView;
 import android.widget.Button;
 
 import com.cengalabs.flatui.FlatUI;
+import com.example.clogic.ybsi.Data.Answer;
+import com.example.clogic.ybsi.Data.AnswerData;
 import com.example.clogic.ybsi.Dialog.MessageDialog;
 import com.example.clogic.ybsi.Fragment.ContentAddFragment;
 import com.example.clogic.ybsi.Fragment.MainFragment;
 import com.example.clogic.ybsi.Fragment.SignupFragment;
 import com.example.clogic.ybsi.R;
+import com.example.clogic.ybsi.Util.Birth;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.accountswitcher.AccountHeader;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+
+import java.util.Date;
 
 import at.markushi.ui.ActionView;
 import at.markushi.ui.action.BackAction;
@@ -80,6 +86,8 @@ public class ParentActivity extends ActionBarActivity {
                         new PrimaryDrawerItem().withName("사랑").withIcon(getResources().getDrawable(R.drawable.love)),
                         new PrimaryDrawerItem().withName("친구와").withIcon(getResources().getDrawable(R.drawable.friends)),
                         new PrimaryDrawerItem().withName("가족과").withIcon(getResources().getDrawable(R.drawable.family)),
+                        new PrimaryDrawerItem().withName("보내기").withIcon(getResources().getDrawable(R.drawable.email)),
+                        new DividerDrawerItem(),
                         new PrimaryDrawerItem().withName("테스트!").withIcon(getResources().getDrawable(R.drawable.family))
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -101,6 +109,8 @@ public class ParentActivity extends ActionBarActivity {
                             case 6:
                                 break;
                             case 7:
+                                break;
+                            case 8:
                                 MessageDialog dialog = new MessageDialog(ParentActivity.this);
                                 dialog.show();
                                 break;
@@ -172,6 +182,13 @@ public class ParentActivity extends ActionBarActivity {
         nowFragment = fragment;
 
         if(nowFragment instanceof MainFragment) {
+
+            if(!pref.getString("content", "").equals("")) {
+                Answer answer = new Answer(new Date(System.currentTimeMillis()), "", "", pref.getString("content", ""));
+                AnswerData.getInstance().saveAnswer(answer);
+                pref.edit().putString("content", "").commit();
+            }
+
             actionView.setAction(new DrawerAction(), ActionView.ROTATE_CLOCKWISE);
             btn_addItem.setBackgroundResource(R.drawable.btn_write);
             btn_addItem.setOnClickListener(new View.OnClickListener() {
@@ -181,7 +198,7 @@ public class ParentActivity extends ActionBarActivity {
                     changeFragment(new ContentAddFragment());
                 }
             });
-        } else {
+        } else if(!(nowFragment instanceof SignupFragment)) {
             actionView.setAction(new BackAction(), ActionView.ROTATE_COUNTER_CLOCKWISE);
         }
 
@@ -216,7 +233,7 @@ public class ParentActivity extends ActionBarActivity {
                                         new ProfileDrawerItem()
                                                 .withName(pref.getString("name", "None"))
                                                 .withEmail(pref.getString("email", "None"))
-                                                .withIcon(getResources().getDrawable(R.drawable.stellars7))
+                                                .withIcon(new Birth(ParentActivity.this).getDrawableAtDay())
                                 )
                                 .build();
 
@@ -228,6 +245,7 @@ public class ParentActivity extends ActionBarActivity {
                                         new PrimaryDrawerItem().withName("사랑").withIcon(getResources().getDrawable(R.drawable.love)),
                                         new PrimaryDrawerItem().withName("친구와").withIcon(getResources().getDrawable(R.drawable.friends)),
                                         new PrimaryDrawerItem().withName("가족과").withIcon(getResources().getDrawable(R.drawable.family)),
+                                        new PrimaryDrawerItem().withName("보내기").withIcon(getResources().getDrawable(R.drawable.family)),
                                         new PrimaryDrawerItem().withName("테스트!").withIcon(getResources().getDrawable(R.drawable.family))
                                 )
                                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -272,8 +290,11 @@ public class ParentActivity extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-
         actionView.setAction(new DrawerAction(), ActionView.ROTATE_CLOCKWISE);
+        if(nowFragment instanceof MainFragment) {
+            super.onBackPressed();
+        } else {
+            changeFragment(new MainFragment());
+        }
     }
 }
