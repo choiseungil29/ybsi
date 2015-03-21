@@ -38,7 +38,7 @@ public class MessageDialog extends Dialog {
         this.c = c;
 
         tv_question = (TextView) findViewById(R.id.tv_question);
-        tv_question.setText(QuestionData.getInstance().getRandomQuestion(Question.Category.Eat));
+        tv_question.setText(QuestionData.getInstance().getRandomQuestion());
 
         et_content = (FlatEditText) findViewById(R.id.et_content);
 
