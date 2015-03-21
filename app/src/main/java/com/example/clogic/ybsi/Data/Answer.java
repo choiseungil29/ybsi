@@ -35,4 +35,16 @@ public class Answer extends SugarRecord<Answer>
     }
 
     ///////////////////////////////////////////////////////////////////////////////////
+    public Question getQuestion()
+    {
+        Question[] q = QuestionData.getInstance().getQuestionArray();
+
+        for(int i=0;i<q.length;++i)
+        {
+            if(question.equals(q[i].string) == true)
+                return q[i];
+        }
+
+        return null;
+    }
 }

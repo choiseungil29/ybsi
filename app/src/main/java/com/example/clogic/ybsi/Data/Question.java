@@ -10,10 +10,17 @@ public class Question
     public enum Category
     {
         None,   //아무때나 뜨는것(아래것들 뜰때 말고 수시로 그냥 뜨는 그런거)
+        /*
         Eat,    //밥먹을 시간 쯤에 뜨는것
         Sleep,  //자기 전에 뜨는것
         Wake,   //일어날 때 뜨는것
         EndWork //일이나 수업이 끝나고 뜨는 것
+        */
+        LeisureLife,
+        HolyDay,
+        Love,
+        Friends,
+        Family
     };
 
     ///////////////////////////////////////////////////////////////////////////////////

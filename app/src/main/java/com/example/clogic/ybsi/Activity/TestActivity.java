@@ -1,7 +1,7 @@
 package com.example.clogic.ybsi.Activity;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -13,16 +13,8 @@ import com.example.clogic.ybsi.Data.Question;
 import com.example.clogic.ybsi.Data.QuestionData;
 import com.example.clogic.ybsi.R;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.net.URL;
 import java.util.Date;
 import java.util.List;
-
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.pdf.PdfWriter;
 
 public class TestActivity extends ActionBarActivity {
 
@@ -32,19 +24,14 @@ public class TestActivity extends ActionBarActivity {
         setContentView(R.layout.activity_test);
 
         //answer Test
-        Answer a = new Answer(new Date(), "asdf", "fdas", "qwads");
+        Answer a = new Answer(new Date(), QuestionData.getInstance().getRandomQuestion(), "으앙", "킄");
+        Question q = a.getQuestion();
         //a.setId(1L);
         AnswerData.getInstance().saveAnswer(a);
-        List<Answer> answer_list = AnswerData.getInstance().getAnswerListByQuestionString("asdf");
+        List<Answer> answer_list = AnswerData.getInstance().getAnswerList();
 
         TextView textView = (TextView)findViewById(R.id.textView);
         textView.setText(answer_list.get(0).answer);
-
-        //Question Test
-        String new_string = QuestionData.getInstance().getRandomQuestion(Question.Category.Eat);
-
-        TextView tv_title = (TextView)this.findViewById(R.id.tv_title);
-        tv_title.setText(new_string);
 
         //pdf test
         try

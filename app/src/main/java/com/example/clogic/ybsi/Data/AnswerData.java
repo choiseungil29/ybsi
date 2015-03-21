@@ -42,7 +42,7 @@ public class AnswerData
 
         return return_list;
     }
-    public List<Answer> getAnswerListByQuestion(Question question)  //질문에 따라 대답을 불러온다
+    public List<Answer> getAnswerListByQuestion(Question question)
     {
         return getAnswerListByQuestionString(question.string);
     }
