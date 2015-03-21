@@ -18,12 +18,12 @@
         android:layout_height="match_parent"
         android:paddingRight="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+        <Button
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:src="@drawable/btn_write"
+            android:id="@+id/addItem"
             android:layout_centerVertical="true"
-            android:text="추가하기"
-            android:textColor="@android:color/white"/>
+            android:layout_alignParentRight="true"/>
     </RelativeLayout>
 </LinearLayout>

@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flatui="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.clogic.ybsi.Fragment.ContentAddFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/splash"/>
+        <com.cengalabs.flatui.views.FlatEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:gravity="top"
+            android:hint="오늘 어땠어요?"
+            android:textColor="@android:color/white"
+            flatui:fl_borderWidth="0dp"
+            flatui:fl_theme="@array/dark"
+            flatui:fl_fieldStyle="fl_transparent"/>
+    </RelativeLayout>
+</LinearLayout>
