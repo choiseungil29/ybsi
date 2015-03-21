@@ -4,8 +4,18 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
+import com.example.clogic.ybsi.Data.Answer;
+import com.example.clogic.ybsi.Data.AnswerData;
+import com.example.clogic.ybsi.Data.Note;
+import com.example.clogic.ybsi.Data.Question;
+import com.example.clogic.ybsi.Data.QuestionData;
+import com.example.clogic.ybsi.Data.Tag;
 import com.example.clogic.ybsi.R;
+import com.orm.query.Select;
+
+import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {

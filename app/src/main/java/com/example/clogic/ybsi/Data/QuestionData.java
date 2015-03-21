@@ -11,35 +11,11 @@ import java.util.Random;
 public class QuestionData
 {
     ///////////////////////////////////////////////////////////////////////////////////
-    public enum Category
-    {
-        None,
-        Eat,
-        Sleep
-    };
-    public class Question
-    {
-        Question()
-        {
-            category = Category.None;
-            string = "Question";
-        }
-        Question(Category c, String s)
-        {
-            category = c;
-            string = s;
-        }
-
-        Category category;
-        String string;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////////////
     private Question[] question;
 
     ///////////////////////////////////////////////////////////////////////////////////
     private static QuestionData instance;
-    public QuestionData GetInstance()
+    public static QuestionData getInstance()
     {
         if (instance == null)
             instance = new QuestionData();
@@ -49,16 +25,16 @@ public class QuestionData
     private QuestionData()
     {
         //질문 데이터 초기화
-        question = new Question[1];
+        question = new Question[4];
 
-        question[0] = new Question(Category.Eat, "오늘은 무엇을 드셨나요?");
-        question[1] = new Question(Category.Sleep, "오늘은 무엇을 드셨나요?");
-        question[2] = new Question(Category.Eat, "오늘은 무엇을 드셨나요?");
-        question[3] = new Question(Category.Eat, "오늘은 무엇을 드셨나요?");
+        question[0] = new Question(Question.Category.Eat, "오늘은 무엇을 드셨나요?");
+        question[1] = new Question(Question.Category.Sleep, "오늘 하루, 특별한 일 있었나요?");
+        question[2] = new Question(Question.Category.Wake, "무슨 꿈 꾸셨나요?");
+        question[3] = new Question(Question.Category.None, "뭐하고 있나요?");
     }
 
     ///////////////////////////////////////////////////////////////////////////////////
-    public String GetRandomQuestion(Category c)
+    public String getRandomQuestion(Question.Category c)    //카테고리에 따라 임의의 질문을 리턴한다.
     {
         List<Integer> index_list = new ArrayList<Integer>();
 
@@ -69,8 +45,10 @@ public class QuestionData
         }
 
         Random random = new Random();
-        int index = random.nextInt(index_list.size());
+        int index = index_list.get(random.nextInt(index_list.size()));
 
         return question[index].string;
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////
 }
