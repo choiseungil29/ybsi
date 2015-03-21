@@ -12,6 +12,7 @@ import com.example.clogic.ybsi.Data.Question;
 import com.example.clogic.ybsi.Data.QuestionData;
 import com.example.clogic.ybsi.R;
 
+import java.util.Date;
 import java.util.List;
 
 public class TestActivity extends ActionBarActivity {
@@ -22,8 +23,8 @@ public class TestActivity extends ActionBarActivity {
         setContentView(R.layout.activity_test);
 
         //answer Test
-        Answer a = new Answer("asdf", "fdas", "qwads");
-        a.setId(1L);
+        Answer a = new Answer(new Date(), "asdf", "fdas", "qwads");
+        //a.setId(1L);
         AnswerData.getInstance().saveAnswer(a);
         List<Answer> answer_list = AnswerData.getInstance().getAnswerListByQuestionString("asdf");
 
