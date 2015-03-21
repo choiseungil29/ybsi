@@ -49,6 +49,10 @@ public class QuestionData
 
         return question[index].string;
     }
+    public Question[] getQuestionArray()
+    {
+        return question;
+    }
 
     ///////////////////////////////////////////////////////////////////////////////////
 }
