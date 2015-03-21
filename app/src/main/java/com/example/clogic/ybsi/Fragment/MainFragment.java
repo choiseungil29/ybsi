@@ -13,6 +13,7 @@ import com.example.clogic.ybsi.Activity.ParentActivity;
 import com.example.clogic.ybsi.Adapter.CustomAdapter;
 import com.example.clogic.ybsi.Data.Answer;
 import com.example.clogic.ybsi.Data.AnswerData;
+import com.example.clogic.ybsi.Data.Question;
 import com.example.clogic.ybsi.R;
 
 import java.util.ArrayList;
@@ -23,6 +24,27 @@ import java.util.ArrayList;
 public class MainFragment extends Fragment {
 
     private ListView lv_contents;
+    private ArrayList<Answer> answers = null;
+
+    public MainFragment(Question.Category category, boolean isAll) {
+        answers = new ArrayList<>();
+        if(isAll) {
+            for (Answer answer : AnswerData.getInstance().getAnswerList()) {
+                answers.add(answer);
+            }
+        } else {
+            for (Answer answer : AnswerData.getInstance().getAnswerList()) {
+
+                try {
+                    if (answer.getQuestion().category.equals(category)) {
+                        answers.add(answer);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,11 +58,6 @@ public class MainFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_main, container, false);
 
         lv_contents = (ListView) v.findViewById(R.id.lv_contents);
-
-        final ArrayList<Answer> answers = new ArrayList<>();
-        for (Answer answer : AnswerData.getInstance().getAnswerList()) {
-            answers.add(answer);
-        }
 
         final CustomAdapter adapter = new CustomAdapter(getActivity(), R.layout.item, answers);
         lv_contents.setAdapter(adapter);

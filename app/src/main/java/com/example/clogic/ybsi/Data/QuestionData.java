@@ -25,7 +25,7 @@ public class QuestionData
     private QuestionData()
     {
         //질문 데이터 초기화
-        question = new Question[4];
+        question = new Question[15];
 
         question[0] = new Question(Question.Category.Family, "가족과 먹고싶은 것이 있나요?");
         question[1] = new Question(Question.Category.Love, "연인과 가고싶은곳이 있나요?");

@@ -37,75 +37,75 @@ public class Birth {
         switch (iMonth) {
             case 1:
                 if(iday >= 20) {
-                    return c.getResources().getDrawable(R.drawable.stellaa1);
+                    return c.getResources().getDrawable(R.drawable.stellaaa1);
                 } else {
-                    return c.getResources().getDrawable(R.drawable.stellaa2);
+                    return c.getResources().getDrawable(R.drawable.stellaaa2);
                 }
             case 2:
                 if(iday >= 19) {
-                    return c.getResources().getDrawable(R.drawable.stellaa12);
+                    return c.getResources().getDrawable(R.drawable.stellaaa12);
                 } else {
-                    return c.getResources().getDrawable(R.drawable.stellaa1);
+                    return c.getResources().getDrawable(R.drawable.stellaaa1);
                 }
             case 3:
                 if(iday >= 21) {
-                    return c.getResources().getDrawable(R.drawable.stellaa11);
+                    return c.getResources().getDrawable(R.drawable.stellaaa11);
                 } else {
-                    return c.getResources().getDrawable(R.drawable.stellaa12);
+                    return c.getResources().getDrawable(R.drawable.stellaaa12);
                 }
             case 4:
                 if(iday >= 20) {
-                    return c.getResources().getDrawable(R.drawable.stellaa10);
+                    return c.getResources().getDrawable(R.drawable.stellaaa10);
                 } else {
-                    return c.getResources().getDrawable(R.drawable.stellaa11);
+                    return c.getResources().getDrawable(R.drawable.stellaaa11);
                 }
             case 5:
                 if(iday >= 21) {
-                    return c.getResources().getDrawable(R.drawable.stellaa9);
+                    return c.getResources().getDrawable(R.drawable.stellaaa9);
                 } else {
-                    return c.getResources().getDrawable(R.drawable.stellaa10);
+                    return c.getResources().getDrawable(R.drawable.stellaaa10);
                 }
             case 6:
                 if(iday >= 22) {
-                    return c.getResources().getDrawable(R.drawable.stellaa8);
+                    return c.getResources().getDrawable(R.drawable.stellaaa8);
                 } else {
-                    return c.getResources().getDrawable(R.drawable.stellaa9);
+                    return c.getResources().getDrawable(R.drawable.stellaaa9);
                 }
             case 7:
                 if(iday >= 23) {
-                    return c.getResources().getDrawable(R.drawable.stellaa7);
+                    return c.getResources().getDrawable(R.drawable.stellaaa7);
                 } else {
-                    return c.getResources().getDrawable(R.drawable.stellaa8);
+                    return c.getResources().getDrawable(R.drawable.stellaaa8);
                 }
             case 8:
                 if(iday >= 23) {
-                    return c.getResources().getDrawable(R.drawable.stellaa6);
+                    return c.getResources().getDrawable(R.drawable.stellaaa6);
                 } else {
-                    return c.getResources().getDrawable(R.drawable.stellaa7);
+                    return c.getResources().getDrawable(R.drawable.stellaaa7);
                 }
             case 9:
                 if(iday >= 24) {
-                    return c.getResources().getDrawable(R.drawable.stellaa5);
+                    return c.getResources().getDrawable(R.drawable.stellaaa5);
                 } else {
-                    return c.getResources().getDrawable(R.drawable.stellaa6);
+                    return c.getResources().getDrawable(R.drawable.stellaaa6);
                 }
             case 10:
                 if(iday >= 23) {
-                    return c.getResources().getDrawable(R.drawable.stellaa4);
+                    return c.getResources().getDrawable(R.drawable.stellaaa4);
                 } else {
-                    return c.getResources().getDrawable(R.drawable.stellaa5);
+                    return c.getResources().getDrawable(R.drawable.stellaaa5);
                 }
             case 11:
                 if(iday >= 23) {
-                    return c.getResources().getDrawable(R.drawable.stellaa3);
+                    return c.getResources().getDrawable(R.drawable.stellaaa3);
                 } else {
-                    return c.getResources().getDrawable(R.drawable.stellaa4);
+                    return c.getResources().getDrawable(R.drawable.stellaaa4);
                 }
             case 12:
                 if(iday >= 25) {
-                    return c.getResources().getDrawable(R.drawable.stellaa2);
+                    return c.getResources().getDrawable(R.drawable.stellaaa2);
                 } else {
-                    return c.getResources().getDrawable(R.drawable.stellaa3);
+                    return c.getResources().getDrawable(R.drawable.stellaaa3);
                 }
             default:
                 break;

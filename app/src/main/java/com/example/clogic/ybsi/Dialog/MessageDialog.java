@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.cengalabs.flatui.views.FlatEditText;
 import com.example.clogic.ybsi.Data.Answer;
 import com.example.clogic.ybsi.Data.AnswerData;
-import com.example.clogic.ybsi.Data.Question;
 import com.example.clogic.ybsi.Data.QuestionData;
 import com.example.clogic.ybsi.R;
 
@@ -38,7 +37,7 @@ public class MessageDialog extends Dialog {
         this.c = c;
 
         tv_question = (TextView) findViewById(R.id.tv_question);
-        tv_question.setText(QuestionData.getInstance().getRandomQuestion(Question.Category.Eat));
+        tv_question.setText(QuestionData.getInstance().getRandomQuestion());
 
         et_content = (FlatEditText) findViewById(R.id.et_content);
 
