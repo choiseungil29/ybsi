@@ -8,12 +8,21 @@ import android.widget.TextView;
 
 import com.example.clogic.ybsi.Data.Answer;
 import com.example.clogic.ybsi.Data.AnswerData;
+import com.example.clogic.ybsi.Data.PDFMaker;
 import com.example.clogic.ybsi.Data.Question;
 import com.example.clogic.ybsi.Data.QuestionData;
 import com.example.clogic.ybsi.R;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.net.URL;
 import java.util.Date;
 import java.util.List;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.pdf.PdfWriter;
 
 public class TestActivity extends ActionBarActivity {
 
@@ -36,6 +45,16 @@ public class TestActivity extends ActionBarActivity {
 
         TextView tv_title = (TextView)this.findViewById(R.id.tv_title);
         tv_title.setText(new_string);
+
+        //pdf test
+        try
+        {
+            PDFMaker.getInstance().exportAnswer(answer_list);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
 
