@@ -25,6 +25,7 @@
             android:gravity="top"
             android:hint="오늘 어땠어요?"
             android:textColor="@android:color/white"
+            android:id="@+id/et_content"
             flatui:fl_borderWidth="0dp"
             flatui:fl_theme="@array/dark"
             flatui:fl_fieldStyle="fl_transparent"/>

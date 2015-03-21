@@ -1,5 +1,6 @@
 package com.example.clogic.ybsi.Activity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -14,8 +15,10 @@ import android.widget.AdapterView;
 import android.widget.Button;
 
 import com.cengalabs.flatui.FlatUI;
+import com.example.clogic.ybsi.Dialog.MessageDialog;
 import com.example.clogic.ybsi.Fragment.ContentAddFragment;
 import com.example.clogic.ybsi.Fragment.MainFragment;
+import com.example.clogic.ybsi.Fragment.SignupFragment;
 import com.example.clogic.ybsi.R;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.accountswitcher.AccountHeader;
@@ -37,10 +40,14 @@ public class ParentActivity extends ActionBarActivity {
 
     private Drawer.Result drawer = null;
 
+    private SharedPreferences pref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent);
+
+        pref = this.getSharedPreferences("Stella", MODE_PRIVATE);
 
         LayoutInflater li = LayoutInflater.from(this);
         View customView = li.inflate(R.layout.actionbar, null);
@@ -59,8 +66,8 @@ public class ParentActivity extends ActionBarActivity {
                 .withHeaderBackground(R.mipmap.background)
                 .addProfiles(
                         new ProfileDrawerItem()
-                                .withName("SeungIl Choi")
-                                .withEmail("choiseungil29@gmail.com")
+                                .withName(pref.getString("name", "None"))
+                                .withEmail(pref.getString("email", "None"))
                                 .withIcon(getResources().getDrawable(R.drawable.stellars7))
                 )
                 .build();
@@ -93,6 +100,12 @@ public class ParentActivity extends ActionBarActivity {
                                 break;
                             case 6:
                                 break;
+                            case 7:
+                                MessageDialog dialog = new MessageDialog(ParentActivity.this);
+                                dialog.show();
+                                break;
+                            default:
+                                break;
                         }
                     }
                 })
@@ -123,7 +136,11 @@ public class ParentActivity extends ActionBarActivity {
 
         btn_addItem = (Button) findViewById(R.id.addItem);
 
-        changeFragment(new MainFragment());
+        if(getIntent().getBooleanExtra("signup", false)) {
+            changeFragment(new MainFragment());
+        } else {
+            changeFragment(new SignupFragment());
+        }
     }
 
 
@@ -178,6 +195,73 @@ public class ParentActivity extends ActionBarActivity {
                     // 여기에 DB에 집어넣는다
                     drawer.closeDrawer();
                     changeFragment(new MainFragment());
+                }
+            });
+        }
+
+        if(nowFragment instanceof SignupFragment) {
+            btn_addItem.setBackgroundResource(R.drawable.btn_ok);
+            btn_addItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    pref.edit().putBoolean("signup", true).commit();
+                    drawer.closeDrawer();
+                    btn_addItem.setBackgroundResource(R.drawable.btn_write);
+                    changeFragment(new MainFragment());
+                    if(pref.getBoolean("signup", false)) {
+                        AccountHeader.Result header = new AccountHeader()
+                                .withActivity(ParentActivity.this)
+                                .withHeaderBackground(R.mipmap.background)
+                                .addProfiles(
+                                        new ProfileDrawerItem()
+                                                .withName(pref.getString("name", "None"))
+                                                .withEmail(pref.getString("email", "None"))
+                                                .withIcon(getResources().getDrawable(R.drawable.stellars7))
+                                )
+                                .build();
+
+                        drawer = new Drawer().withActivity(ParentActivity.this)
+                                .addDrawerItems(
+                                        new PrimaryDrawerItem().withName("시간순").withIcon(getResources().getDrawable(R.drawable.time)),
+                                        new PrimaryDrawerItem().withName("여가생활").withIcon(getResources().getDrawable(R.drawable.rest)),
+                                        new PrimaryDrawerItem().withName("기념일").withIcon(getResources().getDrawable(R.drawable.good)),
+                                        new PrimaryDrawerItem().withName("사랑").withIcon(getResources().getDrawable(R.drawable.love)),
+                                        new PrimaryDrawerItem().withName("친구와").withIcon(getResources().getDrawable(R.drawable.friends)),
+                                        new PrimaryDrawerItem().withName("가족과").withIcon(getResources().getDrawable(R.drawable.family)),
+                                        new PrimaryDrawerItem().withName("테스트!").withIcon(getResources().getDrawable(R.drawable.family))
+                                )
+                                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l, IDrawerItem iDrawerItem) {
+                                        switch (position) {
+                                            case 0:
+                                                break;
+                                            case 1:
+                                                break;
+                                            case 2:
+                                                break;
+                                            case 3:
+                                                break;
+                                            case 4:
+                                                break;
+                                            case 5:
+                                                break;
+                                            case 6:
+                                                break;
+                                            case 7:
+                                                MessageDialog dialog = new MessageDialog(ParentActivity.this);
+                                                dialog.show();
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                })
+                                .withAccountHeader(header)
+                                .withActionBarDrawerToggle(true)
+                                .withTranslucentStatusBar(false)
+                                .build();
+                    }
                 }
             });
         }

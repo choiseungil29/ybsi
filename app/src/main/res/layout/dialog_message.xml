@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flatui="http://schemas.android.com/apk/res-auto"
+    android:layout_width="297dp"
+    android:layout_height="216.67dp">
+
+    <RelativeLayout
+        android:layout_width="283dp"
+        android:layout_height="190dp"
+        android:background="@mipmap/pop_up_bg"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="55dp"
+            android:layout_marginLeft="20dp"
+            android:text="오늘의 질문!"
+            android:textColor="@android:color/white"
+            android:id="@+id/tv_question"/>
+
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/btn_write"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12.5dp"
+            android:layout_marginRight="12.5dp"
+            android:background="@drawable/btn_write"/>
+
+        <com.cengalabs.flatui.views.FlatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="5dp"
+            android:id="@+id/et_content"
+            android:maxLines="3"
+            android:padding="10dp"
+            android:layout_toLeftOf="@id/btn_write"
+            flatui:fl_cornerRadius="0dp"
+            flatui:fl_theme="@array/dark"
+            flatui:fl_fieldStyle="fl_box"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/pop_up_sub"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"/>
+
+</RelativeLayout>
